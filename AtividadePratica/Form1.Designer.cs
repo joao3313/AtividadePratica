@@ -128,7 +128,7 @@
             // cbxTermo
             // 
             cbxTermo.AutoSize = true;
-            cbxTermo.Location = new Point(39, 460);
+            cbxTermo.Location = new Point(37, 483);
             cbxTermo.Name = "cbxTermo";
             cbxTermo.Size = new Size(241, 29);
             cbxTermo.TabIndex = 2;
@@ -143,7 +143,6 @@
             btnEnviar.TabIndex = 3;
             btnEnviar.Text = "Enviar";
             btnEnviar.UseVisualStyleBackColor = true;
-          
             // 
             // btnLimpar
             // 
