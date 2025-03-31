@@ -1,3 +1,7 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace AtividadePratica
 {
     public partial class frmCadastro : Form
@@ -13,7 +17,7 @@ namespace AtividadePratica
             bool isValid = true;
 
             // Validação do Nome
-            if (Nome.Text.Trim().Length < 3)
+            if (string.IsNullOrWhiteSpace(Nome.Text) || Nome.Text.Trim().Length < 3)
             {
                 lblNome.Text = "O nome deve ter pelo menos 3 caracteres.";
                 lblNome.ForeColor = Color.Red;
@@ -91,23 +95,17 @@ namespace AtividadePratica
         // Evento do botão de Enviar
         private void btnEnviar_Click(object sender, EventArgs e)
         {
+            // Validação de todos os campos antes de enviar
             if (ValidarCampos())
             {
-                // Se todos os campos forem válidos, exibe a mensagem de sucesso
+                // Se todos os campos forem válidos, exibe a mensagem de sucesso e salva os dados
                 MessageBox.Show("Cadastro enviado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Chama a função para salvar os dados (substitua com sua lógica real de salvamento)
                 SalvarDados();
-
-                // Limpa os campos após envio bem-sucedido
                 LimparCampos();
             }
-            else
-            {
-                // Se algum campo estiver inválido, não faz nada e as mensagens de erro já estarão visíveis.
-                MessageBox.Show("Por favor, corrija os campos marcados em vermelho.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Caso contrário, a função ValidarCampos já terá exibido as mensagens de erro nos labels
         }
+
 
         // Evento do botão Limpar
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -149,6 +147,89 @@ namespace AtividadePratica
             // Exemplo de exibição de dados (substitua com seu código de salvar os dados)
             string mensagem = $"Nome: {nome}\nEmail: {email}\nIdade: {idade}\nSenha: {senha}\nAceitou Termos: {aceitouTermos}";
             MessageBox.Show($"Dados a serem salvos:\n{mensagem}", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // *** IMPORTANTE: Substitua este exemplo com a sua lógica real de salvamento ***
+        }
+
+        // Eventos de validação em tempo real
+
+        private void Nome_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Nome.Text) || Nome.Text.Trim().Length < 3)
+            {
+                lblNome.Text = "O nome deve ter pelo menos 3 caracteres.";
+                lblNome.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblNome.Text = "";
+            }
+        }
+
+        private void Email_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Email.Text) || !Email.Text.Contains("@") || !Email.Text.Contains("."))
+            {
+                lblEmail.Text = "E-mail inválido.";
+                lblEmail.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblEmail.Text = "";
+            }
+        }
+
+        private void Idade_TextChanged(object sender, EventArgs e)
+        {
+            int idade;
+            if (!int.TryParse(Idade.Text, out idade) || idade < 18 || idade > 100)
+            {
+                lblIdade.Text = "Idade inválida. Deve estar entre 18 e 100 anos.";
+                lblIdade.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblIdade.Text = "";
+            }
+        }
+
+        private void Senha_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Senha.Text) || Senha.Text.Length < 6)
+            {
+                lblSenha.Text = "A senha deve ter pelo menos 6 caracteres.";
+                lblSenha.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblSenha.Text = "";
+            }
+        }
+
+        private void ConfirmaSenha_TextChanged(object sender, EventArgs e)
+        {
+            if (ConfirmaSenha.Text != Senha.Text)
+            {
+                lblConfirmaSenha.Text = "As senhas não coincidem.";
+                lblConfirmaSenha.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblConfirmaSenha.Text = "";
+            }
+        }
+
+        private void cbxTermo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!cbxTermo.Checked)
+            {
+                cbxTermo.Text = "Você precisa confirmar os termos de uso para continuar.";
+                cbxTermo.ForeColor = Color.Red;
+            }
+            else
+            {
+                cbxTermo.Text = "";
+            }
         }
     }
 }

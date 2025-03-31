@@ -143,6 +143,7 @@
             btnEnviar.TabIndex = 3;
             btnEnviar.Text = "Enviar";
             btnEnviar.UseVisualStyleBackColor = true;
+         
             // 
             // btnLimpar
             // 
