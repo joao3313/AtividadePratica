@@ -47,21 +47,22 @@
             // 
             Nome.Location = new Point(187, 71);
             Nome.Name = "Nome";
-            Nome.Size = new Size(150, 31);
+            Nome.Size = new Size(331, 31);
             Nome.TabIndex = 0;
+           
             // 
             // Email
             // 
             Email.Location = new Point(187, 133);
             Email.Name = "Email";
-            Email.Size = new Size(150, 31);
+            Email.Size = new Size(256, 31);
             Email.TabIndex = 0;
             // 
             // Idade
             // 
             Idade.Location = new Point(187, 200);
             Idade.Name = "Idade";
-            Idade.Size = new Size(150, 31);
+            Idade.Size = new Size(121, 31);
             Idade.TabIndex = 0;
             // 
             // Senha
@@ -143,7 +144,6 @@
             btnEnviar.TabIndex = 3;
             btnEnviar.Text = "Enviar";
             btnEnviar.UseVisualStyleBackColor = true;
-         
             // 
             // btnLimpar
             // 

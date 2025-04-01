@@ -11,10 +11,10 @@ namespace AtividadePratica
             InitializeComponent();
         }
 
-        // Função para validar todos os campos
-        private bool ValidarCampos()
+        // Evento do botão de Enviar
+        private void btnEnviar_Click(object sender, EventArgs e)
         {
-            bool isValid = true;
+            bool isValid = true; // Flag para verificar se todos os campos são válidos
 
             // Validação do Nome
             if (string.IsNullOrWhiteSpace(Nome.Text) || Nome.Text.Trim().Length < 3)
@@ -89,70 +89,20 @@ namespace AtividadePratica
                 cbxTermo.Text = "";
             }
 
-            return isValid;
-        }
-
-        // Evento do botão de Enviar
-        private void btnEnviar_Click(object sender, EventArgs e)
-        {
-            // Validação de todos os campos antes de enviar
-            if (ValidarCampos())
+            // Se todos os campos forem válidos, exibe a mensagem de sucesso
+            if (isValid)
             {
-                // Se todos os campos forem válidos, exibe a mensagem de sucesso e salva os dados
                 MessageBox.Show("Cadastro enviado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                SalvarDados();
-                LimparCampos();
+                LimparCampos();  // Limpa os campos após envio bem-sucedido
             }
-            // Caso contrário, a função ValidarCampos já terá exibido as mensagens de erro nos labels
-        }
-
-
-        // Evento do botão Limpar
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            LimparCampos();
-        }
-
-        // Função para limpar todos os campos
-        private void LimparCampos()
-        {
-            // Limpa os campos de texto
-            Nome.Clear();
-            Email.Clear();
-            Idade.Clear();
-            Senha.Clear();
-            ConfirmaSenha.Clear();
-
-            // Desmarca o checkbox
-            cbxTermo.Checked = false;
-
-            // Limpa os labels de erro
-            lblNome.Text = "";
-            lblEmail.Text = "";
-            lblIdade.Text = "";
-            lblSenha.Text = "";
-            lblConfirmaSenha.Text = "";
-            cbxTermo.Text = "";
-        }
-
-        // Função para salvar os dados (substitua com sua lógica real de salvamento)
-        private void SalvarDados()
-        {
-            string nome = Nome.Text;
-            string email = Email.Text;
-            string idade = Idade.Text;
-            string senha = Senha.Text;
-            bool aceitouTermos = cbxTermo.Checked;
-
-            // Exemplo de exibição de dados (substitua com seu código de salvar os dados)
-            string mensagem = $"Nome: {nome}\nEmail: {email}\nIdade: {idade}\nSenha: {senha}\nAceitou Termos: {aceitouTermos}";
-            MessageBox.Show($"Dados a serem salvos:\n{mensagem}", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // *** IMPORTANTE: Substitua este exemplo com a sua lógica real de salvamento ***
+            else
+            {
+                // Caso contrário, uma mensagem de erro é exibida
+                MessageBox.Show("Por favor, corrija os campos marcados em vermelho.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Eventos de validação em tempo real
-
         private void Nome_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(Nome.Text) || Nome.Text.Trim().Length < 3)
@@ -219,6 +169,35 @@ namespace AtividadePratica
             }
         }
 
+        // Evento do botão Limpar
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
+
+        // Função para limpar todos os campos
+        private void LimparCampos()
+        {
+            // Limpa os campos de texto
+            Nome.Clear();
+            Email.Clear();
+            Idade.Clear();
+            Senha.Clear();
+            ConfirmaSenha.Clear();
+
+            // Desmarca o checkbox
+            cbxTermo.Checked = false;
+
+            // Limpa os labels de erro
+            lblNome.Text = "";
+            lblEmail.Text = "";
+            lblIdade.Text = "";
+            lblSenha.Text = "";
+            lblConfirmaSenha.Text = "";
+            cbxTermo.Text = "";
+        }
+
+        // Evento de validação do checkbox de termos
         private void cbxTermo_CheckedChanged(object sender, EventArgs e)
         {
             if (!cbxTermo.Checked)
@@ -231,5 +210,7 @@ namespace AtividadePratica
                 cbxTermo.Text = "";
             }
         }
+
+       
     }
 }
