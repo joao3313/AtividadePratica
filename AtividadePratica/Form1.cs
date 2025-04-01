@@ -19,62 +19,62 @@ namespace AtividadePratica
             // Validação do Nome
             if (string.IsNullOrWhiteSpace(Nome.Text) || Nome.Text.Trim().Length < 3)
             {
-                lblNome.Text = "O nome deve ter pelo menos 3 caracteres.";
-                lblNome.ForeColor = Color.Red;
+                Nome.Text = "O nome deve ter pelo menos 3 caracteres.";
+                Nome.ForeColor = Color.Red;
                 isValid = false;
             }
             else
             {
-                lblNome.Text = "";
+                Nome.Text = "";
             }
 
             // Validação do E-mail
             if (string.IsNullOrWhiteSpace(Email.Text) || !Email.Text.Contains("@") || !Email.Text.Contains("."))
             {
-                lblEmail.Text = "E-mail inválido.";
-                lblEmail.ForeColor = Color.Red;
+                Email.Text = "E-mail inválido.";
+                Email.ForeColor = Color.Red;
                 isValid = false;
             }
             else
             {
-                lblEmail.Text = "";
+                Email.Text = "";
             }
 
             // Validação da Idade
             int idade;
             if (!int.TryParse(Idade.Text, out idade) || idade < 18 || idade > 100)
             {
-                lblIdade.Text = "Idade inválida. Deve estar entre 18 e 100 anos.";
-                lblIdade.ForeColor = Color.Red;
+                Idade.Text = "Idade inválida. Deve estar entre 18 e 100 anos.";
+                Idade.ForeColor = Color.Red;
                 isValid = false;
             }
             else
             {
-                lblIdade.Text = "";
+                Idade.Text = "";
             }
 
             // Validação da Senha
             if (string.IsNullOrWhiteSpace(Senha.Text) || Senha.Text.Length < 6)
             {
-                lblSenha.Text = "A senha deve ter pelo menos 6 caracteres.";
-                lblSenha.ForeColor = Color.Red;
+                Senha.Text = "A senha deve ter pelo menos 6 caracteres.";
+                Senha.ForeColor = Color.Red;
                 isValid = false;
             }
             else
             {
-                lblSenha.Text = "";
+                Senha.Text = "";
             }
 
             // Validação de Confirmação de Senha
             if (ConfirmaSenha.Text != Senha.Text)
             {
-                lblConfirmaSenha.Text = "As senhas não coincidem.";
-                lblConfirmaSenha.ForeColor = Color.Red;
+                ConfirmaSenha.Text = "As senhas não coincidem.";
+                ConfirmaSenha.ForeColor = Color.Red;
                 isValid = false;
             }
             else
             {
-                lblConfirmaSenha.Text = "";
+                ConfirmaSenha.Text = "";
             }
 
             // Validação do Checkbox de Termos de Uso
@@ -107,12 +107,12 @@ namespace AtividadePratica
         {
             if (string.IsNullOrWhiteSpace(Nome.Text) || Nome.Text.Trim().Length < 3)
             {
-                lblNome.Text = "O nome deve ter pelo menos 3 caracteres.";
-                lblNome.ForeColor = Color.Red;
+               Nome.Text = "O nome deve ter pelo menos 3 caracteres.";
+                Nome.ForeColor = Color.Red;
             }
             else
             {
-                lblNome.Text = "";
+                Nome.Text = "";
             }
         }
 
@@ -120,12 +120,12 @@ namespace AtividadePratica
         {
             if (string.IsNullOrWhiteSpace(Email.Text) || !Email.Text.Contains("@") || !Email.Text.Contains("."))
             {
-                lblEmail.Text = "E-mail inválido.";
-                lblEmail.ForeColor = Color.Red;
+                Email.Text = "E-mail inválido.";
+                Email.ForeColor = Color.Red;
             }
             else
             {
-                lblEmail.Text = "";
+                Email.Text = "";
             }
         }
 
@@ -134,12 +134,12 @@ namespace AtividadePratica
             int idade;
             if (!int.TryParse(Idade.Text, out idade) || idade < 18 || idade > 100)
             {
-                lblIdade.Text = "Idade inválida. Deve estar entre 18 e 100 anos.";
-                lblIdade.ForeColor = Color.Red;
+                Idade.Text = "Idade inválida. Deve estar entre 18 e 100 anos.";
+                Idade.ForeColor = Color.Red;
             }
             else
             {
-                lblIdade.Text = "";
+                Idade.Text = "";
             }
         }
 
@@ -147,12 +147,12 @@ namespace AtividadePratica
         {
             if (string.IsNullOrWhiteSpace(Senha.Text) || Senha.Text.Length < 6)
             {
-                lblSenha.Text = "A senha deve ter pelo menos 6 caracteres.";
-                lblSenha.ForeColor = Color.Red;
+                Senha.Text = "A senha deve ter pelo menos 6 caracteres.";
+                Senha.ForeColor = Color.Red;
             }
             else
             {
-                lblSenha.Text = "";
+                Senha.Text = "";
             }
         }
 
@@ -160,12 +160,12 @@ namespace AtividadePratica
         {
             if (ConfirmaSenha.Text != Senha.Text)
             {
-                lblConfirmaSenha.Text = "As senhas não coincidem.";
-                lblConfirmaSenha.ForeColor = Color.Red;
+                ConfirmaSenha.Text = "As senhas não coincidem.";
+                ConfirmaSenha.ForeColor = Color.Red;
             }
             else
             {
-                lblConfirmaSenha.Text = "";
+                ConfirmaSenha.Text = "";
             }
         }
 
@@ -189,11 +189,11 @@ namespace AtividadePratica
             cbxTermo.Checked = false;
 
             // Limpa os labels de erro
-            lblNome.Text = "";
-            lblEmail.Text = "";
-            lblIdade.Text = "";
-            lblSenha.Text = "";
-            lblConfirmaSenha.Text = "";
+            Nome.Text = "";
+            Email.Text = "";
+            Idade.Text = "";
+            Senha.Text = "";
+            ConfirmaSenha.Text = "";
             cbxTermo.Text = "";
         }
 
